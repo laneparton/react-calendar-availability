@@ -1,24 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import CalendarBase from './components/CalendarBase'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto my-12 mb-24">
+      <h1 className="mb-3 text-4xl text-center">Weekly Availability</h1>
+      <p className="mb-4 text-center">Schedule of your calendar availability for a given week.</p>
+      <CalendarBase />
     </div>
   );
 }
