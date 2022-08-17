@@ -1,6 +1,5 @@
 import React from 'react';
 import CalendarBase from './components/CalendarBase'
-import './App.css';
 
 function App() {
   return (
