@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import AddEventDropdown from "./AddEventDropdown";
 
 type CalendarHeaderProps = {
-  availableBlocks: Array<Object>;
-  setAvailableBlocks: Function,
+  availablePeriods: Array<Object>;
+  setAvailablePeriods: Function,
 };
 
-function CalendarHeader({ availableBlocks, setAvailableBlocks }: CalendarHeaderProps) {
+function CalendarHeader({ availablePeriods, setAvailablePeriods }: CalendarHeaderProps) {
   let [showDropdown, setShowDropdown] = useState(false);
     return (
       <header className="relative z-20 flex items-center justify-between flex-none px-6 py-4 border-b border-gray-200">
@@ -18,6 +18,7 @@ function CalendarHeader({ availableBlocks, setAvailableBlocks }: CalendarHeaderP
             <button
               type="button"
               className="px-4 py-2 ml-6 text-sm font-medium text-indigo-600 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              onClick={() => console.log(availablePeriods)}
             >
               Output JSON
             </button>
@@ -25,11 +26,11 @@ function CalendarHeader({ availableBlocks, setAvailableBlocks }: CalendarHeaderP
             <button
               type="button"
               className="px-4 py-2 ml-6 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              onClick={() => setShowDropdown(true)}
+              onClick={() => setShowDropdown(!showDropdown)}
             >
               Add event
             </button>
-            <AddEventDropdown availableBlocks={availableBlocks} dropdownActive={showDropdown} setAvailableBlocks={setAvailableBlocks} />
+            <AddEventDropdown setDropdownActive={setShowDropdown} availablePeriods={availablePeriods} dropdownActive={showDropdown} setAvailablePeriods={setAvailablePeriods} />
           </div>
           <div className="relative ml-6 md:hidden">
             <button

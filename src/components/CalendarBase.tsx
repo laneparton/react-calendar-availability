@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import AvailableBlock from "./AvailableBlock";
+import AvailablePeriod from "./AvailablePeriod";
 import CalendarHeader from "./CalendarHeader";
 
 function CalendarBase() {
-  let [availableBlocks, setAvailableBlocks] = useState([]);
-  console.log(availableBlocks)
+  let [availablePeriods, setAvailablePeriods] = useState([]);
+
   return (
     <div className="flex flex-col h-full">
-      <CalendarHeader availableBlocks={availableBlocks} setAvailableBlocks={setAvailableBlocks} />
+      <CalendarHeader availablePeriods={availablePeriods} setAvailablePeriods={setAvailablePeriods} />
       <div className="flex flex-col flex-auto overflow-auto bg-white">
         <div
           style={{ width: "165%" }}
@@ -130,8 +130,8 @@ function CalendarBase() {
                   gridTemplateRows: `1.75rem repeat(8, minmax(0, 1fr)) auto`,
                 }}
               >
-                {availableBlocks?.map((block: { date: Date, label: string, start: number, end: number }) => (
-                  <AvailableBlock date={block.date} label={block.label} start={block.start} end={block.end} />
+                {availablePeriods?.map((block: { date: Date, label: string, start: number, end: number }) => (
+                  <AvailablePeriod date={block.date} label={block.label} start={block.start} end={block.end} />
                 ))}
               </ol>
             </div>

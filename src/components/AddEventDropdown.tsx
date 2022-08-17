@@ -2,11 +2,12 @@ import React, { useState } from "react";
 
 type AddEventDropdownProps = {
   dropdownActive: boolean;
-  availableBlocks: Array<Object>;
-  setAvailableBlocks: Function;
+  setDropdownActive: Function;
+  availablePeriods: Array<Object>;
+  setAvailablePeriods: Function;
 };
 
-function AddEventDropdown({ availableBlocks, setAvailableBlocks }: AddEventDropdownProps) {
+function AddEventDropdown({ dropdownActive, setDropdownActive, availablePeriods, setAvailablePeriods }: AddEventDropdownProps) {
   let times = [
     {
       label: "9AM",
@@ -60,13 +61,16 @@ function AddEventDropdown({ availableBlocks, setAvailableBlocks }: AddEventDropd
       setInputFields({...inputFields, [e.target.name]: e.target.value} )
   }
 
-  const submitButton = () =>{
-    setAvailableBlocks([...availableBlocks, { date: inputFields.date, label: inputFields.label, start: inputFields.start, end: inputFields.end }]);
+  const submitButton = () => {
+    setDropdownActive(!dropdownActive);
+    setAvailablePeriods([...availablePeriods, { date: inputFields.date, label: inputFields.label, start: inputFields.start, end: inputFields.end }]);
   }
+
+  const activeClassname = dropdownActive ? 'absolute' : 'hidden';
 
   return (
     <div
-      className="absolute top-0 right-0 p-4 mt-3 overflow-hidden origin-top-right bg-white divide-gray-100 rounded-md shadow-lg focus:outline-none ring-1 ring-black ring-opacity-5"
+      className={activeClassname + ` top-full right-0 p-4 mt-3 overflow-hidden origin-top-right bg-white divide-gray-100 rounded-md shadow-lg focus:outline-none ring-1 ring-black ring-opacity-5`}
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="menu-0-button"
@@ -79,7 +83,7 @@ function AddEventDropdown({ availableBlocks, setAvailableBlocks }: AddEventDropd
           id="date"
           onChange={(e) => inputsHandler(e)}
           value={inputFields.date}
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
@@ -90,17 +94,17 @@ function AddEventDropdown({ availableBlocks, setAvailableBlocks }: AddEventDropd
           id="label"
           onChange={(e) => inputsHandler(e)}
           value={inputFields.label}
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
       <div className="mb-4">
-        <label className="text-sm font-medium text-gray-700">From</label>
+        <label className="mb-2 text-sm font-medium text-gray-700">From</label>
         <select
           id="start"
           name="start"
           onChange={(e) => inputsHandler(e)}
           value={inputFields.start}
-          className="block w-full text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="block w-full py-2 text-base border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         >
           {times.map((time) => (
             <option key={time.value} value={time.value}>{time.label}</option>
@@ -108,7 +112,7 @@ function AddEventDropdown({ availableBlocks, setAvailableBlocks }: AddEventDropd
         </select>
       </div>
       <div className="mb-4">
-        <label className="text-sm font-medium text-gray-700">To</label>
+        <label className="mb-2 text-sm font-medium text-gray-700">To</label>
         <select
           id="end"
           name="end"
@@ -121,7 +125,7 @@ function AddEventDropdown({ availableBlocks, setAvailableBlocks }: AddEventDropd
           ))}
         </select>
       </div>
-      <button onClick={() => submitButton()}>Add</button>
+      <button className="w-full px-4 py-1 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm focus:outline-none hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" onClick={() => submitButton()}>Save</button>
     </div>
   );
 }

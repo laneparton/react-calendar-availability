@@ -1,14 +1,14 @@
 import React from "react";
 import moment from 'moment';
 
-type AvailableBlockProps = {
+type AvailablePeriodProps = {
   date: Date,
   label: string,
   start: number,
   end: number
 };
 
-function AvailableBlock({ date, label, start, end}: AvailableBlockProps) {
+function AvailablePeriod({ date, label, start, end}: AvailablePeriodProps) {
   const dateCol = moment(date).day();
   let span = end - start;
   let fixedStart = start - 7;
@@ -27,4 +27,4 @@ function AvailableBlock({ date, label, start, end}: AvailableBlockProps) {
   );
 }
 
-export default AvailableBlock;
+export default AvailablePeriod;
