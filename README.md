@@ -7,14 +7,14 @@
 
 ## Prompt
 
-Using React, create a single page website that will allow users to create a schedule of their calendar availability for a given week.      
-The user should be able to customize their availability for each day of the week.  
-By default the availability should be weekdays only from 9am to 5 pm.  The availability should be stored as an array of objects called available periods.  The start and end times only need to be hourly (we don't need things like 2:30 pm or 11:45 am). 
+Using React, create a single page website that will allow users to create a schedule of their calendar availability for a given week.
+The user should be able to customize their availability for each day of the week.
+By default the availability should be weekdays only from 9am to 5 pm.  The availability should be stored as an array of objects called available periods. The start and end times only need to be hourly (we don't need things like 2:30 pm or 11:45 am).
 
-An available period will consist of a day of the week, a start time and end time.  
-Each day can have multiple available periods, or no availability.  
+An available period will consist of a day of the week, a start time and end time.
+Each day can have multiple available periods, or no availability.
 
-For example I could have availability on Monday from 10am-1pm and 2pm to 5pm.  
+For example I could have availability on Monday from 10am-1pm and 2pm to 5pm.
 my available periods would be:
 {day: 'Monday', start: '10', end: '13'} and {day: 'Monday', start: '14', end: '17'}
 

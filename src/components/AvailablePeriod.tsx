@@ -3,24 +3,23 @@ import moment from 'moment';
 
 type AvailablePeriodProps = {
   date: Date,
-  label: string,
   start: number,
   end: number
 };
 
-function AvailablePeriod({ date, label, start, end}: AvailablePeriodProps) {
-  const dateCol = moment(date).day();
+function AvailablePeriod({ date, start, end}: AvailablePeriodProps) {
+  let dateTime = moment(date);
+  dateTime.hour(start);
+
+  const dateCol = dateTime.day();
   let span = end - start;
   let fixedStart = start - 7;
-  console.log(date, start, end);
-  console.log(dateCol, fixedStart, span);
 
   return (
     <>
-      <li className={`relative flex mt-px sm:col-start-${dateCol}`} style={{ gridRow: `${fixedStart} / span ${span}` }}>
+      <li className={`relative flex mt-px`} style={{ gridColumn: `${dateCol} / span 1`, gridRow: `${fixedStart} / span ${span}` }}>
         <a href="#" className="absolute flex flex-col p-2 overflow-y-auto text-xs leading-5 rounded-lg group inset-1 bg-blue-50 hover:bg-blue-100">
-          <p className="order-1 font-semibold text-blue-700">{label}</p>
-          <p className="text-blue-500 group-hover:text-blue-700"><time dateTime="2022-01-12T06:00">9:00 AM</time></p>
+          <p className="text-blue-500 group-hover:text-blue-700"><time dateTime={dateTime.format()}>{dateTime.format('LT')}</time></p>
         </a>
       </li>
     </>

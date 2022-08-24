@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-type AddEventDropdownProps = {
+type AddAvailabilityDropdownProps = {
   dropdownActive: boolean;
   setDropdownActive: Function;
   availablePeriods: Array<Object>;
   setAvailablePeriods: Function;
 };
 
-function AddEventDropdown({ dropdownActive, setDropdownActive, availablePeriods, setAvailablePeriods }: AddEventDropdownProps) {
+function AddAvailabilityDropdown({ dropdownActive, setDropdownActive, availablePeriods, setAvailablePeriods }: AddAvailabilityDropdownProps) {
   let times = [
     {
       label: "9AM",
@@ -48,22 +48,20 @@ function AddEventDropdown({ dropdownActive, setDropdownActive, availablePeriods,
   ];
 
   const [inputFields , setInputFields] = useState({
-      date: '2022-08-15',
+      date: '2022-08-24',
       start: '9',
       end: '10',
-      label: 'Breakfast',
   })
 
   const inputsHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ): void =>{
-    console.log(e.target.name, e.target.value);
       setInputFields({...inputFields, [e.target.name]: e.target.value} )
   }
 
   const submitButton = () => {
     setDropdownActive(!dropdownActive);
-    setAvailablePeriods([...availablePeriods, { date: inputFields.date, label: inputFields.label, start: inputFields.start, end: inputFields.end }]);
+    setAvailablePeriods([...availablePeriods, { date: inputFields.date, start: inputFields.start, end: inputFields.end }]);
   }
 
   const activeClassname = dropdownActive ? 'absolute' : 'hidden';
@@ -76,24 +74,13 @@ function AddEventDropdown({ dropdownActive, setDropdownActive, availablePeriods,
       aria-labelledby="menu-0-button"
     >
       <div className="mb-4">
-        <label className="sr-only">Email</label>
+        <label className="sr-only">Date</label>
         <input
           type="date"
           name="date"
           id="date"
           onChange={(e) => inputsHandler(e)}
           value={inputFields.date}
-          className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="sr-only">Label</label>
-        <input
-          type="input"
-          name="label"
-          id="label"
-          onChange={(e) => inputsHandler(e)}
-          value={inputFields.label}
           className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
@@ -130,4 +117,4 @@ function AddEventDropdown({ dropdownActive, setDropdownActive, availablePeriods,
   );
 }
 
-export default AddEventDropdown;
+export default AddAvailabilityDropdown;

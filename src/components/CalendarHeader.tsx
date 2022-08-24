@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddEventDropdown from "./AddEventDropdown";
+import AddAvailabilityDropdown from "./AddAvailabilityDropdown";
 
 type CalendarHeaderProps = {
   availablePeriods: Array<Object>;
@@ -30,7 +30,7 @@ function CalendarHeader({ availablePeriods, setAvailablePeriods }: CalendarHeade
             >
               Add event
             </button>
-            <AddEventDropdown setDropdownActive={setShowDropdown} availablePeriods={availablePeriods} dropdownActive={showDropdown} setAvailablePeriods={setAvailablePeriods} />
+            <AddAvailabilityDropdown setDropdownActive={setShowDropdown} availablePeriods={availablePeriods} dropdownActive={showDropdown} setAvailablePeriods={setAvailablePeriods} />
           </div>
           <div className="relative ml-6 md:hidden">
             <button
