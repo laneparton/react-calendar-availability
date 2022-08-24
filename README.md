@@ -1,15 +1,22 @@
-## How To Access This Project
+## How To Access This Project:
 
-1. Visit the live demo:
+1. [Visit the live demo](https://react-calendar-availability.vercel.app/)
 2. Build it locally:
    1. git clone
    2. yarn build/yarn start
+
+## What I might do next:
+
+1. Optimize the "end" select input to auto-adjust based on the "start" value.
+2. Add basic testing with @testing-library/react.
+3. Make the app responsive.
+4. Make the week dynamically generated (so it always shows the current week).
 
 ## Prompt
 
 Using React, create a single page website that will allow users to create a schedule of their calendar availability for a given week.
 The user should be able to customize their availability for each day of the week.
-By default the availability should be weekdays only from 9am to 5 pm.  The availability should be stored as an array of objects called available periods. The start and end times only need to be hourly (we don't need things like 2:30 pm or 11:45 am).
+By default the availability should be weekdays only from 9am to 5 pm. The availability should be stored as an array of objects called available periods. The start and end times only need to be hourly (we don't need things like 2:30 pm or 11:45 am).
 
 An available period will consist of a day of the week, a start time and end time.
 Each day can have multiple available periods, or no availability.
